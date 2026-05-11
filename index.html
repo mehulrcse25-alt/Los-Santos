@@ -1,0 +1,349 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTA V — Los Santos</title>
+  <link rel="stylesheet" href="5.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">GTA V</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <div class="loader-text">Loading Los Santos...</div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <span class="logo-gta">GTA</span><span class="logo-v">V</span>
+  </div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#trailer">Trailer</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#characters">Characters</a></li>
+    <li><a href="#map">World</a></li>
+    <li><a href="#signup">Join</a></li>
+  </ul>
+  <div class="nav-cta"><a href="#signup" class="btn primary small">Play Now</a></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="bg.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Rockstar Games</div>
+    <h1 class="title">Grand Theft Auto<span class="title-v">V</span></h1>
+    <p class="tagline">Welcome to Los Santos — where ambition meets chaos.</p>
+    <div class="hero-buttons">
+      <a href="#trailer" class="btn primary">▶ Watch Trailer</a>
+      <a href="#signup" class="btn secondary">🎮 Join Now</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" data-target="170">0</span><span>M+</span>
+        <span class="stat-label">Copies Sold</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-target="500">0</span><span>+</span>
+        <span class="stat-label">Vehicles</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-target="49">0</span><span> km²</span>
+        <span class="stat-label">World Size</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-dot"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- TRAILER -->
+<section class="trailer" id="trailer">
+  <div class="section-label">// Official Trailer</div>
+  <h2 class="section-title">Watch the Trailer</h2>
+
+  <div class="trailer-wrapper">
+    <!-- YouTube iframe with enablejsapi -->
+    <div class="yt-container">
+      <iframe
+        id="yt-player"
+        src="https://www.youtube.com/embed/hvoD7ehZPcM?enablejsapi=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&color=white"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        title="GTA V Trailer">
+      </iframe>
+    </div>
+
+    <!-- Custom Controls -->
+    <div class="custom-controls" id="custom-controls">
+      <div class="ctrl-row">
+        <button class="ctrl-btn" id="ctrl-backward" title="−10s">
+          <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><text x="12" y="16" text-anchor="middle" font-size="6" fill="currentColor">10</text></svg>
+          <span>−10s</span>
+        </button>
+        <button class="ctrl-btn ctrl-play" id="ctrl-play" title="Play/Pause">
+          <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="pause-icon" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+        <button class="ctrl-btn" id="ctrl-forward" title="+10s">
+          <svg viewBox="0 0 24 24"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><text x="12" y="16" text-anchor="middle" font-size="6" fill="currentColor">10</text></svg>
+          <span>+10s</span>
+        </button>
+      </div>
+      <div class="ctrl-row ctrl-extra">
+        <button class="ctrl-btn small" id="ctrl-mute" title="Mute">🔊</button>
+        <button class="ctrl-btn small" id="ctrl-fullscreen" title="Fullscreen">⛶</button>
+        <span class="ctrl-time" id="ctrl-time">0:00</span>
+      </div>
+      <p class="ctrl-note">⚠️ YouTube API controls — for full native controls, host the MP4 locally (like bg.mp4)</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-label">// What Awaits</div>
+  <h2 class="section-title">Key Features</h2>
+  <div class="feature-container">
+
+    <div class="card" data-delay="0">
+      <div class="card-img-wrap">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.tEBYZ29cVqWyTa-tE-ECQQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Open World">
+        <div class="card-overlay-shine"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-icon">🌆</div>
+        <h3>Open World</h3>
+        <p>Explore a massive dynamic city full of life, crime, and opportunity.</p>
+      </div>
+    </div>
+
+    <div class="card" data-delay="100">
+      <div class="card-img-wrap">
+        <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2018/08/Rockstar-Games-Grand-Theft-Auto-V-Characters.jpg" alt="Characters">
+        <div class="card-overlay-shine"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-icon">👥</div>
+        <h3>3 Protagonists</h3>
+        <p>Switch between three unique characters with distinct stories.</p>
+      </div>
+    </div>
+
+    <div class="card" data-delay="200">
+      <div class="card-img-wrap">
+        <img src="https://pbs.twimg.com/media/GHmtFGkWgAAfTgp.jpg:large" alt="Heists">
+        <div class="card-overlay-shine"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-icon">🔫</div>
+        <h3>Heists</h3>
+        <p>Plan and execute intense multi-stage criminal operations.</p>
+      </div>
+    </div>
+
+    <div class="card" data-delay="300">
+      <div class="card-img-wrap">
+        <img src="https://staticg.sportskeeda.com/editor/2023/10/0cfb7-16962261539874-1920.jpg?w=840" alt="Vehicles">
+        <div class="card-overlay-shine"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-icon">🚗</div>
+        <h3>500+ Vehicles</h3>
+        <p>Drive, fly and customize hundreds of land, air and sea vehicles.</p>
+      </div>
+    </div>
+
+    <div class="card" data-delay="400">
+      <div class="card-img-wrap">
+        <img src="https://staticg.sportskeeda.com/editor/2023/12/1b9da-17036988254870-1920.jpg" alt="Online">
+        <div class="card-overlay-shine"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-icon">🌐</div>
+        <h3>GTA Online</h3>
+        <p>Join millions in the ever-expanding online open world.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHARACTERS -->
+<section class="characters" id="characters">
+  <div class="section-label">// The Crew</div>
+  <h2 class="section-title">Main Characters</h2>
+  <div class="character-container">
+
+    <div class="char-card" data-char="michael">
+      <div class="char-img-wrap">
+        <img src="https://cdn.wallpapersafari.com/81/18/Wd8wn1.jpg" alt="Michael">
+        <div class="char-glow"></div>
+      </div>
+      <div class="char-info">
+        <h3>Michael De Santa</h3>
+        <p class="char-role">The Retired Heist Man</p>
+        <p class="char-bio">A former bank robber living in witness protection, dragged back into the life he tried to leave behind.</p>
+        <div class="char-tags"><span>Strategy</span><span>Precision</span></div>
+      </div>
+    </div>
+
+    <div class="char-card" data-char="franklin">
+      <div class="char-img-wrap">
+        <img src="https://images.hdqwalls.com/download/franklin-gta-v-1242x2668.jpg" alt="Franklin">
+        <div class="char-glow"></div>
+      </div>
+      <div class="char-info">
+        <h3>Franklin Clinton</h3>
+        <p class="char-role">The Ambitious Street Hustler</p>
+        <p class="char-bio">A young man from the streets of South LS, seeking the big score that will change his life forever.</p>
+        <div class="char-tags"><span>Speed</span><span>Driving</span></div>
+      </div>
+    </div>
+
+    <div class="char-card" data-char="trevor">
+      <div class="char-img-wrap">
+        <img src="https://wallpaper.forfun.com/fetch/57/57fb734b32504a75f02adb0415246b52.jpeg" alt="Trevor">
+        <div class="char-glow"></div>
+      </div>
+      <div class="char-info">
+        <h3>Trevor Philips</h3>
+        <p class="char-role">The Unpredictable Wildcard</p>
+        <p class="char-bio">Unhinged, violent, and surprisingly loyal — Trevor runs the desert like his own personal kingdom.</p>
+        <div class="char-tags"><span>Mayhem</span><span>Strength</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- MAP / WORLD SLIDESHOW -->
+<section class="map-section" id="map">
+  <div class="section-label">// Explore the World</div>
+  <h2 class="section-title">Los Santos & Blaine County</h2>
+
+  <div class="map-slideshow">
+    <div class="slides-track" id="slides-track">
+
+      <div class="slide active">
+        <img src="https://i.pinimg.com/originals/aa/1f/e1/aa1fe1650f79586dce1437b79f5e5872.png" alt="Full Map">
+        <div class="slide-caption">
+          <h3>🗺️ Full Map Overview</h3>
+          <p>The entire world of Los Santos and Blaine County — 49 km² of playground.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="https://i.ytimg.com/vi/BXZS0SEjazw/maxresdefault.jpg" alt="Los Santos City">
+        <div class="slide-caption">
+          <h3>🌆 Los Santos City</h3>
+          <p>A sprawling metropolis inspired by Los Angeles — full of luxury, crime, and culture.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="https://staticg.sportskeeda.com/editor/2023/01/65d44-16730416431289-1920.jpg" alt="Vinewood Hills">
+        <div class="slide-caption">
+          <h3>🎬 Vinewood Hills</h3>
+          <p>The glamorous hills above the city, home to celebrities and mansions.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://staticg.sportskeeda.com/editor/2022/07/42b50-16587698960862-1920.jpg" alt="Sandy Shores">
+        <div class="slide-caption">
+          <h3>🏜️ Sandy Shores</h3>
+          <p>Trevor's territory — a lawless desert town where anything goes.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://staticg.sportskeeda.com/editor/2023/02/24c47-16763424578879-1920.jpg" alt="Paleto Bay">
+        <div class="slide-caption">
+          <h3>🌲 Paleto Bay</h3>
+          <p>A sleepy rural town on the northern coast, far from the city lights.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Controls -->
+    <button class="slide-btn prev" id="slide-prev" aria-label="Previous">&#8592;</button>
+    <button class="slide-btn next" id="slide-next" aria-label="Next">&#8594;</button>
+    <!-- Dots -->
+    <div class="slide-dots" id="slide-dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+      <span class="dot" data-index="3"></span>
+      <span class="dot" data-index="4"></span>
+    </div>
+    <!-- Progress bar -->
+    <div class="slide-progress"><div class="slide-progress-fill" id="slide-progress-fill"></div></div>
+  </div>
+</section>
+<!-- SIGNUP -->
+<section class="signup" id="signup">
+  <div class="section-label">// Get Early Access</div>
+  <h2 class="section-title">Join Beta Testing</h2>
+  <div class="signup-card">
+    <div class="signup-left">
+      <h3>What you get</h3>
+      <ul class="perks">
+        <li>✔ Early access to new content</li>
+        <li>✔ Exclusive in-game rewards</li>
+        <li>✔ Beta tester badge</li>
+        <li>✔ Direct feedback channel</li>
+      </ul>
+    </div>
+    <div class="signup-right">
+      <div class="input-group">
+        <label>Your Name</label>
+        <input type="text" id="signup-name" placeholder="Michael De Santa" required>
+      </div>
+      <div class="input-group">
+        <label>Email Address</label>
+        <input type="email" id="signup-email" placeholder="you@lossantos.com" required>
+      </div>
+      <div class="input-group">
+        <label>Platform</label>
+        <select id="signup-platform">
+          <option value="">Select Platform</option>
+          <option>PC</option>
+          <option>PlayStation 5</option>
+          <option>Xbox Series X</option>
+        </select>
+      </div>
+      <button class="btn primary full" id="signup-btn">Join Now →</button>
+      <div class="signup-success" id="signup-success">🎮 You're on the list! See you in Los Santos.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span class="logo-gta">GTA</span><span class="logo-v">V</span></div>
+  <p>© 2026 GTA V Fan Project Page. Not affiliated with Rockstar Games.</p>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#trailer">Trailer</a>
+    <a href="#features">Features</a>
+    <a href="#characters">Characters</a>
+  </div>
+</footer>
+<!-- Back to top -->
+<button class="back-to-top" id="back-to-top" title="Back to top">↑</button>
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="5.js"></script>
+</body>
+</html>
