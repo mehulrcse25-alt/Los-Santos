@@ -1,4 +1,3 @@
-2. Style.css :-
 /* ========================================
    GTA V — Stylesheet
    ======================================== */
@@ -825,13 +824,81 @@ footer p { font-size: 13px; color: var(--accent); margin-bottom: 14px; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .title { font-size: 56px; }
-  nav ul { display: none; }
-  .hero-stats { flex-direction: column; gap: 10px; }
+
+  /* --- Navbar --- */
+  nav { padding: 0 18px; }
+  nav ul { display: none; }            /* hide text links — no hamburger needed for a fan page */
+  .nav-cta .btn.small { padding: 7px 14px; font-size: 12px; }
+
+  /* --- Hero --- */
+  .title { font-size: 52px; }
+  .tagline { font-size: 16px; }
+  .hero-buttons .btn { padding: 11px 22px; font-size: 14px; }
+  .hero-stats {
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 20px;
+    width: 90%;
+  }
+  .stat { padding: 0 10px; }
   .stat-divider { display: none; }
+
+  /* --- Section titles --- */
+  .section-title { font-size: 36px; margin-bottom: 32px; }
+
+  /* --- Video player controls --- */
+  /* Always show controls on mobile (no hover) */
+  .video-player-wrap .vid-controls {
+    opacity: 1;
+    pointer-events: all;
+  }
+  /* Big play button must be tappable on mobile */
+  .vid-big-play { pointer-events: auto; }
+
+  /* Shrink the control bar so it fits narrow screens */
+  .vid-bar { padding: 4px 6px 8px; gap: 2px; flex-wrap: wrap; }
+  .vid-bar-left, .vid-bar-right { gap: 2px; }
+  .vid-btn { width: 30px; height: 30px; }
+  .vid-btn svg { width: 17px; height: 17px; }
+  .vid-volume { width: 44px; }
+  .vid-time { font-size: 10px; }
+
+  /* Enlarge seek bar hit area for fingers */
+  .vid-progress-wrap { padding: 12px 10px 6px; }
+  .vid-progress-bg { height: 5px; }
+
+  /* --- Feature cards --- */
+  .feature-container { gap: 16px; }
+  .card { width: calc(100% - 32px); max-width: 380px; }
+
+  /* --- Character cards --- */
+  .character-container { gap: 20px; }
+  .char-card { width: calc(100% - 32px); max-width: 380px; }
+
+  /* --- Map slideshow --- */
+  .slide img { height: 240px; }
+  .slide-caption { padding: 24px 14px 14px; }
+  .slide-caption h3 { font-size: 20px; }
+  .slide-caption p { font-size: 13px; }
+  .slide-btn { width: 40px; height: 40px; font-size: 18px; }
+  .slide-btn.prev { left: 8px; }
+  .slide-btn.next { right: 8px; }
+  .slide-dots { bottom: 52px; }
+
+  /* --- Signup --- */
   .signup-card { flex-direction: column; }
-  .signup-left { flex: none; }
-  .slide img { height: 300px; }
-  .section-title { font-size: 36px; }
-  .vid-volume { width: 50px; }
+  .signup-left { flex: none; padding: 28px 24px; }
+  .signup-right { padding: 24px; }
+
+  /* --- Back to top --- */
+  .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 18px; }
+}
+
+@media (max-width: 400px) {
+  .title { font-size: 42px; }
+  .tagline { font-size: 14px; }
+  /* Hide volume slider on very small screens to prevent overflow */
+  .vid-volume { display: none; }
+  .vid-time { font-size: 9px; }
+  .section-title { font-size: 30px; }
 }
