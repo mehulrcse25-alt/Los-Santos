@@ -1,5 +1,4 @@
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -74,40 +73,78 @@
 
 <!-- TRAILER -->
 <section class="trailer" id="trailer">
-  <div class="section-label">// Official Trailer</div>
   <h2 class="section-title">Watch the Trailer</h2>
 
   <div class="trailer-wrapper">
-    <div class="yt-container">
-      <iframe
-        id="yt-player"
-        src="https://www.youtube.com/embed/hvoD7ehZPcM?enablejsapi=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&color=white"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-        title="GTA V Trailer">
-      </iframe>
-    </div>
+    <!-- Native Video Player -->
+    <div class="video-player-wrap" id="video-player-wrap">
+      <video id="trailer-video" preload="metadata" poster="trailer-poster.jpg">
+        <source src="trailer.mp4" type="video/mp4">
+        <source src="trailer.webm" type="video/webm">
+        Your browser does not support the video element.
+      </video>
 
-    <!-- Custom Controls -->
-    <div class="custom-controls" id="custom-controls">
-      <div class="ctrl-row">
-        <button class="ctrl-btn" id="ctrl-backward" title="−10s">
-          <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><text x="12" y="16" text-anchor="middle" font-size="6" fill="currentColor">10</text></svg>
-          <span>−10s</span>
-        </button>
-        <button class="ctrl-btn ctrl-play" id="ctrl-play" title="Play/Pause">
-          <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          <svg id="pause-icon" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-        </button>
-        <button class="ctrl-btn" id="ctrl-forward" title="+10s">
-          <svg viewBox="0 0 24 24"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><text x="12" y="16" text-anchor="middle" font-size="6" fill="currentColor">10</text></svg>
-          <span>+10s</span>
-        </button>
+      <!-- Big centre play button (shown when paused) -->
+      <div class="vid-big-play" id="vid-big-play">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       </div>
-      <div class="ctrl-row ctrl-extra">
-        <button class="ctrl-btn small" id="ctrl-mute" title="Mute">🔊</button>
-        <button class="ctrl-btn small" id="ctrl-fullscreen" title="Fullscreen">⛶</button>
-        <span class="ctrl-time" id="ctrl-time">0:00</span>
+
+      <!-- Overlay controls (fade in on hover/activity) -->
+      <div class="vid-controls" id="vid-controls">
+
+        <!-- Progress / seek bar -->
+        <div class="vid-progress-wrap">
+          <div class="vid-progress-bg" id="vid-progress-bg">
+            <div class="vid-buffered" id="vid-buffered"></div>
+            <div class="vid-played"   id="vid-played"></div>
+            <div class="vid-thumb"    id="vid-thumb"></div>
+          </div>
+        </div>
+
+        <!-- Bottom control bar -->
+        <div class="vid-bar">
+          <!-- Left cluster -->
+          <div class="vid-bar-left">
+            <button class="vid-btn" id="vid-play-btn" title="Play / Pause">
+              <svg class="ico ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="ico ico-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+
+            <button class="vid-btn" id="vid-rewind-btn" title="−10s">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+                <text x="12" y="15.5" text-anchor="middle" font-size="5.5" fill="currentColor" font-family="sans-serif">10</text>
+              </svg>
+            </button>
+
+            <button class="vid-btn" id="vid-forward-btn" title="+10s">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/>
+                <text x="12" y="15.5" text-anchor="middle" font-size="5.5" fill="currentColor" font-family="sans-serif">10</text>
+              </svg>
+            </button>
+
+            <!-- Volume -->
+            <button class="vid-btn" id="vid-mute-btn" title="Mute / Unmute">
+              <svg class="ico ico-vol-up" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+              <svg class="ico ico-vol-off" viewBox="0 0 24 24" style="display:none"><path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 17.73 18l2 2L21 18.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            </button>
+            <input type="range" class="vid-volume" id="vid-volume" min="0" max="1" step="0.02" value="1" title="Volume">
+
+            <span class="vid-time" id="vid-time">0:00 / 0:00</span>
+          </div>
+
+          <!-- Right cluster -->
+          <div class="vid-bar-right">
+            <button class="vid-btn" id="vid-pip-btn" title="Picture-in-Picture">
+              <svg viewBox="0 0 24 24"><path d="M19 7h-8v6h8V7zm2-4H3C1.9 3 1 3.9 1 5v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/></svg>
+            </button>
+            <button class="vid-btn" id="vid-fs-btn" title="Fullscreen">
+              <svg class="ico ico-fs-enter" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              <svg class="ico ico-fs-exit"  viewBox="0 0 24 24" style="display:none"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -115,7 +152,6 @@
 
 <!-- FEATURES -->
 <section class="features" id="features">
-  <div class="section-label">// What Awaits</div>
   <h2 class="section-title">Key Features</h2>
   <div class="feature-container">
 
@@ -184,7 +220,6 @@
 
 <!-- CHARACTERS -->
 <section class="characters" id="characters">
-  <div class="section-label">// The Crew</div>
   <h2 class="section-title">Main Characters</h2>
   <div class="character-container">
 
@@ -226,11 +261,12 @@
         <div class="char-tags"><span>Mayhem</span><span>Strength</span></div>
       </div>
     </div>
+
   </div>
 </section>
+
 <!-- MAP / WORLD SLIDESHOW -->
 <section class="map-section" id="map">
-  <div class="section-label">// Explore the World</div>
   <h2 class="section-title">Los Santos & Blaine County</h2>
 
   <div class="map-slideshow">
@@ -245,7 +281,7 @@
       </div>
 
       <div class="slide">
-        <img src="https://i.ytimg.com/vi/BXZS0SEjazw/maxresdefault.jpg" alt="Los Santos City">
+        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/576ce4ed-cb97-4b59-a1d9-01fd88e5402c/diauliz-3e2b5fc8-f593-47af-8e27-1a903e4fc058.png/v1/fill/w_1192,h_670,q_70,strp/gta_5_wallpaper_10__nve__5real__by_omareljoker_diauliz-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiJcL2ZcLzU3NmNlNGVkLWNiOTctNGI1OS1hMWQ5LTAxZmQ4OGU1NDAyY1wvZGlhdWxpei0zZTJiNWZjOC1mNTkzLTQ3YWYtOGUyNy0xYTkwM2U0ZmMwNTgucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.UCTGfSd3W_7eXKuk1Fz3cmGCmwI0BEQtO1460laGUqk" alt="Los Santos City">
         <div class="slide-caption">
           <h3>🌆 Los Santos City</h3>
           <p>A sprawling metropolis inspired by Los Angeles — full of luxury, crime, and culture.</p>
@@ -253,31 +289,34 @@
       </div>
 
       <div class="slide">
-        <img src="https://staticg.sportskeeda.com/editor/2023/01/65d44-16730416431289-1920.jpg" alt="Vinewood Hills">
+        <img src="https://gta5wiki.com/images/Vinewood_Sign_GTA_V.webp" alt="Vinewood Hills">
         <div class="slide-caption">
           <h3>🎬 Vinewood Hills</h3>
           <p>The glamorous hills above the city, home to celebrities and mansions.</p>
         </div>
       </div>
+
       <div class="slide">
-        <img src="https://staticg.sportskeeda.com/editor/2022/07/42b50-16587698960862-1920.jpg" alt="Sandy Shores">
+        <img src="https://forum-cfx-re.akamaized.net/original/4X/3/e/6/3e63b5865b238ed7c332548552d4a6f09c2c3c17.jpeg" alt="Sandy Shores">
         <div class="slide-caption">
           <h3>🏜️ Sandy Shores</h3>
           <p>Trevor's territory — a lawless desert town where anything goes.</p>
         </div>
       </div>
+
       <div class="slide">
-        <img src="https://staticg.sportskeeda.com/editor/2023/02/24c47-16763424578879-1920.jpg" alt="Paleto Bay">
+        <img src="https://img.gta5-mods.com/q95/images/paleto-bay-enhancement-arnored/cc464e-GTA5%202015-12-01%2012-26-28-62.jpg" alt="Paleto Bay">
         <div class="slide-caption">
           <h3>🌲 Paleto Bay</h3>
           <p>A sleepy rural town on the northern coast, far from the city lights.</p>
         </div>
       </div>
+
     </div>
-    <!-- Controls -->
+
     <button class="slide-btn prev" id="slide-prev" aria-label="Previous">&#8592;</button>
     <button class="slide-btn next" id="slide-next" aria-label="Next">&#8594;</button>
-    <!-- Dots -->
+
     <div class="slide-dots" id="slide-dots">
       <span class="dot active" data-index="0"></span>
       <span class="dot" data-index="1"></span>
@@ -285,13 +324,13 @@
       <span class="dot" data-index="3"></span>
       <span class="dot" data-index="4"></span>
     </div>
-    <!-- Progress bar -->
+
     <div class="slide-progress"><div class="slide-progress-fill" id="slide-progress-fill"></div></div>
   </div>
 </section>
+
 <!-- SIGNUP -->
 <section class="signup" id="signup">
-  <div class="section-label">// Get Early Access</div>
   <h2 class="section-title">Join Beta Testing</h2>
   <div class="signup-card">
     <div class="signup-left">
@@ -330,6 +369,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo"><span class="logo-gta">GTA</span><span class="logo-v">V</span></div>
+  <p>@mehul's Game Developer Page</p>
   <p>© 2026 GTA V Fan Project Page. Not affiliated with Rockstar Games.</p>
   <div class="footer-links">
     <a href="#home">Home</a>
@@ -338,10 +378,9 @@
     <a href="#characters">Characters</a>
   </div>
 </footer>
-<!-- Back to top -->
+
 <button class="back-to-top" id="back-to-top" title="Back to top">↑</button>
-<!-- YouTube IFrame API -->
-<script src="https://www.youtube.com/iframe_api"></script>
+
 <script src="5.js"></script>
 </body>
 </html>
